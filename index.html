@@ -70,6 +70,19 @@
   }
   .edition { color: var(--muted); }
   .steps { margin: 14px 0 15px; gap: 12px; color: var(--muted); }
+  .reset-progress {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 6px 10px;
+    border: 1px solid var(--edge);
+    border-radius: 10px;
+    background: var(--paper);
+    color: var(--accent-deep);
+    font: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .reset-progress:disabled { opacity: .6; cursor: default; }
   .rails { display: flex; flex: 1; gap: 5px; }
   .rails span { flex: 1; height: 3px; border-radius: 5px; background: #c6d9ef; }
   .rails .on { background: linear-gradient(90deg, #315d94, #6993c7); }
@@ -553,6 +566,7 @@
   <div class="steps">
     <div class="rails" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
     <span id="step" aria-label="第 1 步，共 4 步">01 / 04</span>
+    <button class="reset-progress" id="reset-progress" type="button" aria-label="清除刮卡进度并重新开始">清除进度</button>
   </div>
 
   <section class="scene card cover-card" aria-labelledby="cover-title">
@@ -892,6 +906,7 @@
   ];
 
   const deckKey = 'meimei-birthday-mm1120-deck';
+  const previousSelectionKey = 'meimei-birthday-mm1120-selection';
   const rewardScene = scenes[1];
   const rewardHeading = document.querySelector('#reward-heading');
   const giftCount = document.querySelector('#gift-count');
@@ -909,6 +924,7 @@
   let deck;
   let activeSlot = null;
   let wishSeen = false;
+  let resetting = false;
 
   function isGiftSlot(slot, count = gifts.length) {
     return Number.isInteger(slot) && slot >= 0 && slot < count;
@@ -945,7 +961,7 @@
 
     deck = shuffleGifts();
     try {
-      const previous = JSON.parse(localStorage.getItem('meimei-birthday-mm1120-selection'));
+      const previous = JSON.parse(localStorage.getItem(previousSelectionKey));
       if (isGiftSlot(previous?.slot)) {
         const oldGiftSlot = deck.findIndex(gift => gift.id === previous.giftId);
         if (oldGiftSlot >= 0) {
@@ -959,6 +975,7 @@
   }
 
   function saveDeck() {
+    if (resetting) return;
     try {
       const state = {
         order: deck.map(gift => gift.id),
@@ -1129,6 +1146,21 @@
   });
   document.querySelector('#reread').addEventListener('click', () => goTo(2));
   document.querySelector('#return-wall').addEventListener('click', () => goTo(1));
+  document.querySelector('#reset-progress').addEventListener('click', event => {
+    resetting = true;
+    switching = true;
+    event.currentTarget.disabled = true;
+    clearTimeout(sceneTimer);
+    clearTimeout(openingTimer);
+    try {
+      localStorage.removeItem(previousSelectionKey);
+      localStorage.removeItem('meimei-birthday-mm1120-gift');
+      localStorage.removeItem(deckKey);
+    } catch {
+      // 浏览器没有开放存储时，重新加载也会丢弃当前页面的进度。
+    }
+    location.reload();
+  });
   rememberStage(0, true);
   window.addEventListener('popstate', event => {
     const index = event.state?.meimeiStage;
