@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e9f0f7">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梅梅大王 · 生日限定隐藏款">
+<meta property="og:description" content="打开生日盲盒，刮开你的生日惊喜。">
+<title>梅梅大王 · 生日限定隐藏款｜Meimei Birthday Blind Box V2</title>
+<style>
+  :root {
+    color-scheme: light;
+    --navy: #112745;
+    --navy-deep: #09182e;
+    --mist: #6e89a9;
+    --silver: #edf3fa;
+    --champagne: #e7cca0;
+    --ice: #e9f0f7;
+    --ink: #223751;
+    --muted: #50647b;
+    --accent: #375b85;
+    --accent-deep: #193e6b;
+    --paper: #f8fbfe;
+    --tint: #e7eff8;
+    --edge: #afc0d4;
+    --line: #cedae7;
+    --serif: "Songti SC", "Noto Serif CJK SC", "SimSun", Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    color: var(--ink);
+    background: radial-gradient(ellipse at 70% 0, #f9fcff, transparent 70%), var(--ice);
+    font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .shell {
+    width: min(100%, 560px);
+    margin: auto;
+    padding: max(22px, env(safe-area-inset-top)) max(17px, env(safe-area-inset-right))
+      max(22px, env(safe-area-inset-bottom)) max(17px, env(safe-area-inset-left));
+  }
+  .mast, .card-top, .card-bottom, .steps, .meter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .mast { min-height: 30px; }
+  .brand, .edition, .card-top, .card-bottom, .steps, .meter {
+    font-size: .75rem;
+    letter-spacing: .09em;
+    font-weight: 740;
+  }
+  .brand { display: flex; align-items: center; gap: 8px; }
+  .brand span {
+    display: grid;
+    width: 29px;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid var(--edge);
+    border-radius: 50%;
+    color: var(--accent);
+    background: var(--paper);
+    font-size: .94rem;
+  }
+  .edition { color: var(--muted); }
+  .steps { margin: 14px 0 15px; gap: 12px; color: var(--muted); }
+  .rails { display: flex; flex: 1; gap: 5px; }
+  .rails span { flex: 1; height: 3px; border-radius: 5px; background: #c6d9ef; }
+  .rails .on { background: linear-gradient(90deg, #315d94, #6993c7); }
+  .scene { animation: enter .38s cubic-bezier(.2,.75,.3,1) both; }
+  .scene.leaving { animation: leave .18s ease both; }
+  @keyframes enter { from { opacity: 0; transform: translateY(12px); } }
+  @keyframes leave { to { opacity: 0; transform: translateY(-8px); } }
+  .card {
+    position: relative;
+    padding: 21px clamp(17px, 5vw, 27px) 19px;
+    border: 1px solid var(--edge);
+    border-radius: 27px;
+    background: var(--paper);
+    box-shadow: 0 18px 40px #15375d18, inset 0 0 0 1px #ffffffd9;
+    text-align: center;
+  }
+  .card-top { color: var(--accent); }
+  h1, h2, p { margin: 0; }
+  h1, h2, .reward-title, .note { font-family: var(--serif); }
+  h1 {
+    margin-top: 9px;
+    font-size: clamp(1.85rem, 8vw, 2.55rem);
+    line-height: 1.23;
+    letter-spacing: .015em;
+  }
+  h1 span { display: block; color: var(--accent-deep); }
+  h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.23; }
+  .eyebrow {
+    margin-top: 21px;
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 760;
+    letter-spacing: .15em;
+  }
+  .copy { margin: 12px auto 0; font-size: 1rem; line-height: 1.65; color: var(--muted); }
+  .cover-card {
+    overflow: hidden;
+    border-color: var(--mist);
+    background: linear-gradient(156deg, var(--navy), var(--navy-deep) 78%);
+    color: var(--silver);
+    box-shadow: 0 21px 45px #12294e30, inset 0 0 0 5px #e8f2ff0b;
+  }
+  .cover-card .card-top { color: var(--champagne); }
+  .cover-card .eyebrow { color: #bfcfe3; }
+  .cover-card h1 { font-size: clamp(2.05rem, 8.6vw, 3.18rem); line-height: 1.12; }
+  .cover-card h1 span { margin-top: 7px; color: var(--silver); font-size: .62em; letter-spacing: .12em; }
+  .cover-card .copy { color: #d2deeb; font-family: var(--serif); letter-spacing: .07em; }
+  .cover-card .card-bottom { border-color: #aec5df53; color: #c7d7e9; }
+  .cover-card .button {
+    border-color: #f7fbff;
+    background: linear-gradient(112deg, #fcfeff, #bfcee2);
+    color: var(--navy);
+  }
+  .cover-card .button:focus-visible { outline-color: var(--champagne); }
+  .card-bottom {
+    margin-top: 17px;
+    padding-top: 13px;
+    border-top: 1px dashed var(--edge);
+    color: var(--muted);
+    text-align: left;
+  }
+  .card-bottom span:last-child { text-align: right; }
+  .card-bottom span:first-child { white-space: nowrap; }
+  @media (max-width: 360px) { .card-bottom { letter-spacing: .035em; } }
+
+  /* 含礼盒、枫叶和星芒的卡面插画 */
+  .art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    height: clamp(162px, 45vw, 210px);
+    overflow: hidden;
+    margin-top: 16px;
+    border: 1px solid var(--edge);
+    border-radius: 19px;
+    background:
+      radial-gradient(ellipse at 52% 48%, #f3fbff, transparent 67%),
+      radial-gradient(ellipse at 0 0, #c8e2f6, transparent 64%), #cbdcf3;
+  }
+  .art::before {
+    position: absolute;
+    z-index: -1;
+    width: 158px;
+    height: 135px;
+    border: 1px dashed #4577a77a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #f5fbff78, 0 0 0 23px #f5fbff55;
+    content: "";
+  }
+  .cover-card .art {
+    height: clamp(173px, 48vw, 241px);
+    border-color: #b8cbe44f;
+    background: radial-gradient(ellipse at 52% 42%, #466588, transparent 67%), #142741;
+  }
+  .cover-card .art::before {
+    border-color: #dceaff72;
+    box-shadow: 0 0 0 12px #e3edff12, 0 0 0 27px #e3edff09;
+  }
+  .cover-card .leaf.a { color: #a78963; }
+  .cover-card .leaf.b { color: #697f9c; }
+  .cover-card .spark { color: var(--champagne); }
+  @media (max-width: 480px) and (max-height: 660px) {
+    .shell { padding-top: max(14px, env(safe-area-inset-top)); }
+    .steps { margin-block: 10px 12px; }
+    .cover-card { padding-top: 17px; }
+    .cover-card .eyebrow { margin-top: 15px; }
+    .cover-card .art { height: clamp(154px, 42vw, 183px); margin-top: 13px; }
+  }
+  .gift {
+    position: relative;
+    width: 94px;
+    height: 67px;
+    margin-top: 16px;
+    transform: rotate(-11deg);
+    border: 1px solid #3b5e8a;
+    border-radius: 6px 6px 11px 11px;
+    background: repeating-linear-gradient(125deg, #ffffff28 0 3px, transparent 3px 13px),
+      linear-gradient(120deg, #9dc8ed, #456fa9 77%, #335a92);
+    box-shadow: 7px 12px 18px #254c7852, inset -10px 0 #254c7830;
+  }
+  .gift-lid {
+    position: absolute;
+    z-index: 3;
+    inset: -9px -7px auto;
+    height: 23px;
+    border: 1px solid #557aa7;
+    border-radius: 6px;
+    background: linear-gradient(#eff5ff, #94acc9);
+    box-shadow: 0 3px 4px #284f7a45;
+  }
+  .gift::after {
+    position: absolute;
+    z-index: 2;
+    inset: -9px 37px 0;
+    background: linear-gradient(90deg, #bc7c46, #fff0b4 35%, #dcab67 88%);
+    content: "";
+  }
+  .loop {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    width: 35px;
+    height: 22px;
+    border: 6px solid #d19c59;
+    border-right-color: #f0cc86;
+    border-radius: 65% 72% 67% 40%;
+    transform: rotate(-25deg);
+    transform-origin: bottom left;
+  }
+  .loop:first-child { transform: scaleX(-1) rotate(-25deg); }
+  .gift-lid .loop { bottom: calc(100% - 2px); }
+  .cover-card.is-opening .gift-lid { animation: lift-lid .51s cubic-bezier(.2,.72,.35,1) both; }
+  @keyframes lift-lid { to { transform: translate(-8px, -55px) rotate(-19deg); opacity: .72; } }
+  .leaf, .spark { position: absolute; color: #4e7fa0; }
+  .leaf { width: 36px; height: 36px; background: currentColor; }
+  .leaf {
+    clip-path: polygon(50% 0, 60% 25%, 70% 16%, 67% 45%, 93% 34%, 86% 47%, 100% 51%,
+      77% 73%, 82% 81%, 54% 77%, 53% 100%, 47% 100%, 48% 77%, 18% 81%, 23% 73%,
+      0 51%, 14% 47%, 7% 34%, 33% 45%, 30% 16%, 40% 25%);
+  }
+  .leaf.a { top: 17%; left: 13%; transform: rotate(-27deg); }
+  .leaf.b { right: 14%; bottom: 19%; transform: rotate(31deg) scale(.72); color: #3f6797; }
+  .spark { color: #986739; font-size: 1.4rem; }
+  .spark.a { top: 16%; right: 20%; }
+  .spark.b { bottom: 20%; left: 22%; color: #496f9e; }
+
+  /* 刮层与结果纸面叠放，提示文字随第一笔退场 */
+  .scratch-card h2 { margin-top: 23px; }
+  @supports (color: color-mix(in srgb, blue, white)) {
+    .reward-deck {
+      --accent-deep: color-mix(in srgb, var(--accent) 62%, #142841);
+      --edge: color-mix(in srgb, var(--accent) 35%, var(--tint));
+    }
+  }
+  .gift-count { margin-top: 8px; color: var(--accent); font-size: .82rem; font-weight: 720; }
+  .collection-progress { display: block; width: 100%; margin: 11px 0 0; }
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 17px;
+  }
+  .gift-choice {
+    position: relative;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 4px;
+    min-width: 0;
+    min-height: 115px;
+    padding: 9px 5px;
+    border: 1px solid var(--edge);
+    border-radius: 13px;
+    background: repeating-linear-gradient(126deg, #ffffff60 0 1px, transparent 1px 12px),
+      linear-gradient(146deg, var(--paper), #d9e5f2 72%, #f2f6fb);
+    box-shadow: 0 4px 8px #23487719;
+    color: var(--accent-deep);
+    font: inherit;
+    font-weight: 740;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .gift-choice::before {
+    position: absolute;
+    inset: 4px;
+    border: 1px solid #ffffff9c;
+    border-radius: 9px;
+    content: "";
+    pointer-events: none;
+  }
+  .gift-choice:active { transform: translateY(1px); }
+  @media (hover: hover) {
+    .gift-choice:not(:disabled):hover { transform: translateY(-3px); box-shadow: 0 6px 13px #23487732; }
+  }
+  .gift-choice:disabled { cursor: default; opacity: .55; }
+  .gift-choice[aria-current="true"] {
+    border-color: var(--accent);
+    background: var(--tint);
+    box-shadow: 0 0 0 1px var(--accent);
+    color: var(--accent-deep);
+  }
+  .gift-choice.is-opened {
+    border-color: var(--opened-accent);
+    background: var(--opened-tint);
+    color: var(--opened-accent);
+    opacity: 1;
+  }
+  .ticket-mark {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    aspect-ratio: 1;
+    border: 1px solid #ffffffc9;
+    border-radius: 50%;
+    background: #ffffffa6;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .ticket-number, .ticket-edition { font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+  .ticket-number { font-size: .73rem; }
+  .ticket-edition { font-size: clamp(.45rem, 1.9vw, .6rem); text-transform: uppercase; }
+  .ticket-name { font-size: .74rem; line-height: 1.25; overflow-wrap: anywhere; }
+  .ticket-status { font-size: .61rem; }
+  .collection-complete {
+    margin-top: 19px;
+    padding: 15px 12px;
+    border: 1px solid #cfbc94;
+    border-radius: 14px;
+    background: #faf6ed;
+    color: var(--navy);
+    font-size: .92rem;
+    font-weight: 740;
+  }
+  .gift-scratch {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--edge);
+    scroll-margin-top: max(12px, env(safe-area-inset-top));
+  }
+  .gift-scratch h3 { margin: 0; color: var(--accent-deep); font-size: .93rem; }
+  .gift-scratch .scratch-area { margin-top: 12px; }
+  .scratch-area {
+    position: relative;
+    display: grid;
+    min-height: clamp(222px, 59vw, 255px);
+    margin-top: 17px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--edge);
+    border-radius: 17px;
+    background: radial-gradient(ellipse at 50% 20%, var(--paper), var(--tint));
+    transition: border-color .18s ease, box-shadow .18s ease;
+  }
+  .scratch-area.is-scratching { border-color: var(--mist); box-shadow: 0 0 0 3px #718bab29; }
+  .result { display: grid; align-content: center; justify-items: center; gap: 9px; padding: 17px; }
+  .result .symbol { color: var(--accent); font-size: 1.45rem; line-height: 1; }
+  .reward-theme { color: var(--accent-deep); font-size: .83rem; font-weight: 760; letter-spacing: .1em; }
+  .reward-title { color: var(--accent-deep); font-size: clamp(1.35rem, 6vw, 1.85rem); font-weight: 760; overflow-wrap: anywhere; }
+  .gift-scratch .result { opacity: 0; transform: translateY(7px); transition: opacity .36s ease, transform .36s ease; }
+  .gift-scratch .revealed .result { opacity: 1; transform: none; }
+  .gift-scratch .result .symbol {
+    display: grid;
+    width: 45px;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid var(--edge);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+  .reward-collected { color: var(--muted); font-size: .79rem; }
+  .result .copy { margin: 0; }
+  .note { font-size: clamp(1.06rem, 4.7vw, 1.19rem); line-height: 1.75; text-align: left; }
+  .note span { display: block; }
+  .note span:last-child { margin-top: 7px; color: var(--accent-deep); font-weight: 700; }
+  .wish-card .scratch-area {
+    border-color: #c5b69c;
+    background: #fbf8f0;
+  }
+  .wish-card .result { visibility: hidden; padding: 20px 17px; }
+  .wish-card .revealed .result { visibility: visible; }
+  .wish-card .note {
+    width: 100%;
+    padding: 13px 12px 10px;
+    border-block: 1px solid #dfd0b5;
+    font-size: clamp(1rem, 4.15vw, 1.18rem);
+    line-height: 1.6;
+  }
+  .wish-card .note span + span { margin-top: 5px; }
+  .wish-card .revealed .note span { animation: letter-line .42s ease both; }
+  .wish-card .revealed .note span:nth-child(2) { animation-delay: .14s; }
+  .wish-card .revealed .note span:nth-child(3) { animation-delay: .27s; }
+  .wish-card .revealed .note span:nth-child(4) { animation-delay: .40s; }
+  .wish-card .revealed .note span:nth-child(5) { animation-delay: .53s; }
+  .wish-card .revealed .note span:nth-child(6) { animation-delay: .66s; }
+  @keyframes letter-line { from { opacity: 0; transform: translateY(5px); } }
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: crosshair;
+    transition: opacity .46s ease;
+  }
+  .prompt {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 8px;
+    padding: 15px;
+    color: var(--ink);
+    font-size: 1.02rem;
+    font-weight: 740;
+    pointer-events: none;
+    transition: opacity .18s;
+  }
+  .prompt span {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    aspect-ratio: 1;
+    border: 1px solid #ffffffdd;
+    border-radius: 50%;
+    background: #ffffffaa;
+    color: var(--accent);
+    font-size: 1.55rem;
+  }
+  .prompt strong { padding: 5px 9px; border-radius: 7px; background: #ffffffc7; }
+  .started .prompt, .revealed canvas { opacity: 0; }
+  .revealed canvas { pointer-events: none; }
+  .meter { margin-top: 13px; color: var(--muted); justify-content: flex-start; }
+  progress { flex: 1; height: 5px; overflow: hidden; border: 0; border-radius: 9px; background: var(--line); }
+  progress::-webkit-progress-bar { background: var(--line); border-radius: 9px; }
+  progress::-webkit-progress-value { background: var(--accent); border-radius: 9px; }
+  progress::-moz-progress-bar { background: var(--accent); border-radius: 9px; }
+  .percent { font-variant-numeric: tabular-nums; min-width: 3em; text-align: right; }
+  .button {
+    display: block;
+    width: 100%;
+    min-height: 49px;
+    margin-top: 13px;
+    border: 1px solid var(--accent-deep);
+    border-radius: 13px;
+    padding: 10px 14px;
+    background: linear-gradient(110deg, var(--accent), var(--accent-deep));
+    box-shadow: 0 4px 10px #223e6325, inset 0 1px #ffffff45;
+    color: #fff;
+    font: inherit;
+    font-weight: 740;
+    cursor: pointer;
+  }
+  .button:active { transform: translateY(1px); }
+  button:focus-visible { outline: 3px solid var(--accent-deep); outline-offset: 3px; }
+  .scratch-actions { display: grid; min-height: 49px; margin-top: 13px; }
+  .scratch-actions .button { grid-area: 1 / 1; margin-top: 0; }
+  .scratch-actions .next { touch-action: manipulation; }
+  h1:focus, h2:focus { outline: none; }
+  .album-cover {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: 16px;
+    padding: 27px 20px 23px;
+    border: 1px solid var(--mist);
+    border-radius: 16px;
+    background: var(--navy);
+    color: var(--silver);
+  }
+  .album-cover .leaf { z-index: -1; opacity: .35; }
+  .album-cover .leaf.a { top: 12px; left: 13px; color: var(--champagne); }
+  .album-cover .leaf.b { right: 12px; bottom: 12px; color: #b6c9e0; }
+  .album-cover h2 { font-size: clamp(1.12rem, 5vw, 1.73rem); letter-spacing: .035em; }
+  .album-complete {
+    margin-top: 9px;
+    color: var(--champagne);
+    font-size: .88rem;
+    font-weight: 740;
+    letter-spacing: .08em;
+  }
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .album-entry {
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    gap: 5px;
+    min-width: 0;
+    min-height: 104px;
+    padding: 9px 5px;
+    border: 1px solid var(--edge);
+    border-radius: 11px;
+    background: var(--opened-tint);
+    color: var(--opened-accent);
+    box-shadow: inset 0 0 0 3px #ffffff7d;
+  }
+  .album-entry .ticket-theme { font-size: .64rem; }
+  .album-entry .ticket-name { font-weight: 750; }
+  .final-card:not([hidden]) .album-grid { animation: enter .5s .10s both; }
+  .album-salutation { margin: 18px 0 6px; color: var(--navy); font: 700 1.24rem var(--serif); }
+  .album-wish { color: var(--muted); font-size: .92rem; line-height: 1.6; }
+  .album-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .button.secondary { border-color: var(--edge); background: var(--paper); color: var(--accent-deep); box-shadow: none; }
+  .music {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    background: var(--paper);
+    color: var(--accent-deep);
+  }
+  .music-header, .music-buttons, .music-volume { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .music-header { justify-content: space-between; }
+  .music-title { font: 740 1rem var(--serif); }
+  .music-status { color: var(--muted); font-size: .75rem; line-height: 1.4; }
+  .music button {
+    min-width: 54px;
+    min-height: 44px;
+    padding: 5px 11px;
+    border: 1px solid var(--edge);
+    border-radius: 9px;
+    background: var(--tint);
+    color: var(--accent-deep);
+    font: 720 .8rem system-ui, sans-serif;
+    cursor: pointer;
+  }
+  .music button:disabled { opacity: .52; cursor: default; }
+  .music-volume { flex: 1; min-width: 104px; color: var(--muted); font-size: .73rem; }
+  .music-volume input { flex: 1; min-width: 52px; width: 70px; min-height: 37px; accent-color: var(--accent); }
+  .sr, .assist:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="mast">
+    <div class="brand"><span aria-hidden="true">✦</span> MEIMEI KING</div>
+    <div class="edition">No. MM-1013</div>
+  </header>
+  <div class="steps">
+    <div class="rails" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+    <span id="step" aria-label="第 1 步，共 4 步">01 / 04</span>
+  </div>
+
+  <section class="scene card cover-card" aria-labelledby="cover-title">
+    <div class="card-top"><span>LIMITED EDITION</span></div>
+    <p class="eyebrow">MEIMEI KING · BIRTHDAY BLIND BOX</p>
+    <h1 id="cover-title" aria-label="梅梅大王 · 生日限定隐藏款" tabindex="-1">梅梅大王<span>生日限定隐藏款</span></h1>
+    <div class="art" role="img" aria-label="蓝色礼盒与枫叶">
+      <i class="leaf a"></i><i class="leaf b"></i><span class="spark a">✦</span><span class="spark b">✧</span>
+      <div class="gift"><span class="gift-lid"><i class="loop"></i><i class="loop"></i></span></div>
+    </div>
+    <p class="copy">到了听枫的季节了。</p>
+    <button class="button" id="start" type="button">开启生日盲盒</button>
+    <footer class="card-bottom"><span>No. MM-1013</span><span>Only for Meimei King</span></footer>
+  </section>
+
+  <section class="scene card scratch-card reward-deck" aria-labelledby="reward-heading" hidden>
+    <div class="card-top"><span>LIMITED EDITION</span></div>
+    <h2 id="reward-heading" aria-describedby="gift-count" tabindex="-1">BIRTHDAY COLLECTION</h2>
+    <p class="gift-count" id="gift-count" aria-live="polite"></p>
+    <progress class="collection-progress" id="collection-progress" value="0" aria-label="收藏进度"></progress>
+    <div class="gift-grid" id="gift-grid" role="group" aria-label="收藏卡"></div>
+    <section class="gift-scratch" id="gift-scratch" aria-labelledby="gift-scratch-heading" hidden>
+      <h3 id="gift-scratch-heading" tabindex="-1"></h3>
+      <div id="gift-scratch-content"></div>
+    </section>
+    <div class="collection-complete" id="collection-complete" hidden>
+      <p>九份生日惊喜，全部收藏完成！</p>
+      <button class="button" id="gift-finish" type="button">解锁生日祝福</button>
+      <button class="button secondary" id="browse-album" type="button" hidden>浏览收藏册</button>
+    </div>
+    <footer class="card-bottom"><span>No. MM-1013</span><span>Only for Meimei King</span></footer>
+  </section>
+
+  <template id="gift-scratch-template">
+    <div class="scratch-area">
+      <div class="result" aria-hidden="true">
+        <span class="symbol" aria-hidden="true"></span>
+        <p class="reward-theme"></p>
+        <p class="reward-title"></p>
+        <p class="reward-collected">已收入生日收藏册</p>
+      </div>
+      <canvas width="720" height="520" aria-hidden="true"></canvas>
+      <p class="prompt"><span aria-hidden="true">✦</span><strong>刮开这张卡，揭晓礼物</strong></p>
+    </div>
+    <div class="meter">
+      <span>解锁进度</span><progress max="100" value="0" aria-label="解锁进度"></progress><span class="percent" aria-hidden="true">0%</span>
+    </div>
+    <div class="scratch-actions">
+      <button type="button" class="button assist">揭晓生日奖励</button>
+      <button type="button" class="button next" hidden>返回收藏墙</button>
+    </div>
+  </template>
+
+  <section class="scene card scratch-card wish-card" aria-labelledby="message-heading" hidden>
+    <div class="card-top"><span>LIMITED EDITION</span></div>
+    <h2 id="message-heading" tabindex="-1">BIRTHDAY WISHES</h2>
+    <div class="scratch-area">
+      <div class="result" aria-hidden="true">
+        <span class="symbol" aria-hidden="true">♥</span>
+        <p class="note">
+          <span>到了听枫的季节了。</span>
+          <span>有些惊喜，可能会迟到一点。</span>
+          <span>但属于你的那份心意，不会缺席。</span>
+          <span>希望新的一岁，你依然可以做自己喜欢的事，去想去的地方，遇见值得开心的人。</span>
+          <span>愿这个秋天有枫叶，也有惊喜。</span>
+          <span>生日快乐，梅梅大王。</span>
+        </p>
+      </div>
+      <canvas width="720" height="520" aria-hidden="true"></canvas>
+      <p class="prompt"><span aria-hidden="true">♥</span><strong>刮开，收下生日祝福</strong></p>
+    </div>
+    <div class="meter">
+      <span>解锁进度</span><progress max="100" value="0" aria-label="解锁进度"></progress><span class="percent" aria-hidden="true">0%</span>
+    </div>
+    <div class="scratch-actions">
+      <button type="button" class="button assist">揭晓生日祝福</button>
+      <button type="button" class="button next" hidden>查看收藏册</button>
+    </div>
+    <footer class="card-bottom"><span>No. MM-1013</span><span>Only for Meimei King</span></footer>
+  </section>
+
+  <section class="scene card final-card" aria-labelledby="final-heading" hidden>
+    <div class="card-top"><span>LIMITED EDITION</span></div>
+    <div class="album-cover">
+      <i class="leaf a" aria-hidden="true"></i><i class="leaf b" aria-hidden="true"></i>
+      <h2 id="final-heading" tabindex="-1">MEIMEI KING · BIRTHDAY COLLECTION</h2>
+      <p class="album-complete" id="album-complete"></p>
+    </div>
+    <ol class="album-grid" id="album-grid" aria-label="生日收藏册"></ol>
+    <p class="album-salutation">生日快乐，梅梅大王。</p>
+    <p class="album-wish">愿你这个秋天被温柔包住。<br>九份惊喜，全部属于你。</p>
+    <div class="album-actions">
+      <button class="button secondary" id="reread" type="button">重读生日祝福</button>
+      <button class="button" id="return-wall" type="button">返回收藏墙</button>
+    </div>
+    <footer class="card-bottom"><span>No. MM-1013</span><span>Only for Meimei King</span></footer>
+  </section>
+
+  <aside class="music" aria-label="生日配乐">
+    <div class="music-header">
+      <p class="music-title">枫 · 周杰伦</p>
+      <p class="music-status" id="music-status" role="status">音乐尚未添加</p>
+    </div>
+    <div class="music-buttons">
+      <button id="music-toggle" type="button" disabled>播放</button>
+      <button id="music-pick" type="button">添加音频</button>
+      <label class="music-volume">音量 <input id="music-volume" type="range" min="0" max="1" step=".05" value=".7" disabled></label>
+    </div>
+    <p class="music-status" id="music-volume-help" hidden>可以用设备音量键调节。</p>
+    <input id="music-file" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac,.opus" hidden>
+    <audio id="music-audio" preload="none"></audio>
+  </aside>
+  <p class="sr" id="announcement" aria-live="polite"></p>
+</main>
+
+<script>
+  const scenes = [...document.querySelectorAll('.scene')];
+  const rails = [...document.querySelectorAll('.rails span')];
+  const step = document.querySelector('#step');
+  const announcement = document.querySelector('#announcement');
+  const startButton = document.querySelector('#start');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const unlockAt = 0.42;
+  const silverFoil = ['#9caec1', '#edf3f8', '#c4d0dd', '#f4f8fd', '#a5b6ca'];
+  let current = 0;
+  let switching = false;
+  let sceneTimer;
+  let openingTimer;
+
+  function rememberStage(index, replace = false) {
+    try {
+      const state = {meimeiStage: index};
+      if (replace) history.replaceState(state, '');
+      else history.pushState(state, '');
+    } catch {
+      // 历史记录不可用时仍可使用页面内按钮。
+    }
+  }
+
+  function goTo(index, fromHistory = false) {
+    if (fromHistory) {
+      clearTimeout(sceneTimer);
+      clearTimeout(openingTimer);
+      scenes[current].classList.remove('leaving');
+      switching = false;
+    }
+    if (index > 0) enterCollection();
+    if (index > 1 && opened.size !== gifts.length) index = 1;
+    if (index === 3 && !wishSeen) index = 2;
+    if (index === 0) {
+      startButton.disabled = false;
+      scenes[0].classList.remove('is-opening');
+    }
+    if (switching || index === current) return;
+    switching = true;
+    const outgoing = scenes[current];
+    outgoing.classList.add('leaving');
+    function switchScene() {
+      outgoing.hidden = true;
+      outgoing.classList.remove('leaving');
+      current = index;
+      scenes[index].hidden = false;
+      if (index === 2 && wishSeen) revealWish();
+      if (index === 3) renderAlbum();
+      rails.forEach((rail, i) => rail.classList.toggle('on', i <= index));
+      step.textContent = `0${index + 1} / 04`;
+      step.setAttribute('aria-label', `第 ${index + 1} 步，共 4 步`);
+      announcement.textContent = '';
+      window.scrollTo(0, 0);
+      scenes[index].querySelector('h1, h2').focus({ preventScroll: true });
+      switching = false;
+      if (!fromHistory) rememberStage(index);
+    }
+    if (reducedMotion.matches) switchScene();
+    else sceneTimer = setTimeout(switchScene, 180);
+  }
+
+  function makeScratchCard(card, colors, status, onContinue, onReveal) {
+    const area = card.querySelector('.scratch-area');
+    const canvas = card.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    const { width, height } = canvas;
+    const progress = card.querySelector('progress');
+    const percent = card.querySelector('.percent');
+    const assist = card.querySelector('.assist');
+    const next = card.querySelector('.next');
+    const sample = document.createElement('canvas');
+    sample.width = 72;
+    sample.height = 52;
+    const sampleCtx = sample.getContext('2d', { willReadFrequently: true });
+    let unlocked = false;
+    let pointerId = null;
+    let previous;
+    let checkFrame = 0;
+    let touchStart;
+    let tapFrame = 0;
+
+    const foil = ctx.createLinearGradient(0, 0, width, height);
+    colors.forEach((color, i) => foil.addColorStop(i / (colors.length - 1), color));
+    ctx.fillStyle = foil;
+    ctx.fillRect(0, 0, width, height);
+    ctx.strokeStyle = '#ffffff42';
+    ctx.lineWidth = 2;
+    for (let x = -height; x < width; x += 19) {
+      ctx.beginPath();
+      ctx.moveTo(x, height);
+      ctx.lineTo(x + height, 0);
+      ctx.stroke();
+    }
+    ctx.strokeStyle = '#ffffff95';
+    ctx.strokeRect(16, 16, width - 32, height - 32);
+    ctx.fillStyle = '#ffffffad';
+    ctx.font = '27px Georgia, serif';
+    for (let y = 64; y < height - 24; y += 84) {
+      for (let x = 43; x < width - 30; x += 93) ctx.fillText('✧', x + (y % 3) * 12, y);
+    }
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = 91;
+    ctx.lineCap = 'round';
+    ctx.fillStyle = ctx.strokeStyle = '#000';
+
+    function setProgress(value) {
+      progress.value = value;
+      percent.textContent = `${value}%`;
+    }
+
+    function showNext() {
+      const focusedAssist = document.activeElement === assist;
+      assist.hidden = true;
+      next.hidden = false;
+      if (focusedAssist) next.focus({ preventScroll: true });
+    }
+
+    function reveal() {
+      if (unlocked) return;
+      unlocked = true;
+      cancelAnimationFrame(checkFrame);
+      onReveal?.();
+      area.classList.remove('is-scratching');
+      area.classList.add('started', 'revealed');
+      area.querySelector('.result').removeAttribute('aria-hidden');
+      area.querySelector('.prompt').hidden = true;
+      setProgress(100);
+      announcement.textContent = status;
+      if (pointerId === null) showNext();
+    }
+
+    function checkCoverage() {
+      checkFrame = 0;
+      sampleCtx.clearRect(0, 0, sample.width, sample.height);
+      sampleCtx.drawImage(canvas, 0, 0, sample.width, sample.height);
+      const pixels = sampleCtx.getImageData(0, 0, sample.width, sample.height).data;
+      let removed = 0;
+      for (let i = 3; i < pixels.length; i += 4) removed += 255 - pixels[i];
+      const ratio = removed / (255 * sample.width * sample.height);
+      if (ratio >= unlockAt) {
+        reveal();
+        return;
+      }
+      setProgress(Math.floor(ratio * 100 / unlockAt));
+    }
+
+    function scratch(event) {
+      const bounds = canvas.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) * width / bounds.width;
+      const y = (event.clientY - bounds.top) * height / bounds.height;
+      ctx.beginPath();
+      if (previous) {
+        ctx.moveTo(previous.x, previous.y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      } else {
+        ctx.arc(x, y, ctx.lineWidth / 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      previous = { x, y };
+      if (!checkFrame) checkFrame = requestAnimationFrame(checkCoverage);
+    }
+
+    canvas.addEventListener('pointerdown', event => {
+      if (unlocked || switching || pointerId !== null || event.button !== 0) return;
+      pointerId = event.pointerId;
+      canvas.setPointerCapture(pointerId);
+      previous = null;
+      area.classList.add('started', 'is-scratching');
+      scratch(event);
+    });
+    canvas.addEventListener('pointermove', event => {
+      if (!unlocked && event.pointerId === pointerId) scratch(event);
+    });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) {
+      canvas.addEventListener(type, event => {
+        if (event.pointerId !== pointerId) return;
+        pointerId = null;
+        area.classList.remove('is-scratching');
+        if (unlocked) showNext();
+      });
+    }
+    assist.addEventListener('click', reveal);
+
+    function stayedWithinTapDistance(event) {
+      return touchStart?.pointerId === event.pointerId &&
+        Math.hypot(event.clientX - touchStart.clientX, event.clientY - touchStart.clientY) <= 10;
+    }
+
+    next.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch' && event.isPrimary) touchStart = event;
+    });
+    next.addEventListener('pointermove', event => {
+      if (!stayedWithinTapDistance(event)) touchStart = null;
+    });
+    next.addEventListener('pointercancel', () => { touchStart = null; });
+    next.addEventListener('pointerup', event => {
+      // 刚刮完时，浏览器可能收到轻点却没有发出 click。
+      if (stayedWithinTapDistance(event) && next.contains(document.elementFromPoint(event.clientX, event.clientY))) {
+        tapFrame = requestAnimationFrame(() => next.click());
+      }
+      touchStart = null;
+    });
+    next.addEventListener('click', () => {
+      cancelAnimationFrame(tapFrame);
+      if (unlocked && next.isConnected && !next.closest('[hidden]')) onContinue();
+    });
+    return reveal;
+  }
+
+  const gifts = [
+    { id: 'airpods', name: 'AirPods5', theme: '音乐限定款', mark: '♪', accent: '#315b85', tint: '#d7eaf8' },
+    { id: 'scarf', name: '手工围巾', theme: '温暖限定款', mark: '≋', accent: '#755735', tint: '#f2e6d2' },
+    { id: 'jacket', name: '阿迪外套', theme: '运动限定款', mark: '↗', accent: '#354b83', tint: '#dce4f6' },
+    { id: 'power-bank', name: '磁吸充电宝', theme: '能量限定款', mark: '↯', accent: '#2a6571', tint: '#d7edef' },
+    { id: 'scratch-ticket', name: '彩票刮刮卡', theme: '幸运限定款', mark: '◇', accent: '#3e604c', tint: '#e0eee2' },
+    { id: 'wechat', name: '微信红包', theme: '好运限定款', mark: '✦', accent: '#823c35', tint: '#f1e6d9' },
+    { id: 'lip-glaze', name: 'YSL唇釉', theme: '美妆限定款', mark: '✧', accent: '#584b7c', tint: '#ebe5f2' },
+    { id: 'building-blocks', name: '积木', theme: '创意限定款', mark: '▦', accent: '#85542b', tint: '#f7ead1' },
+    { id: 'line-dog-tumbler', name: '线条小狗保温杯', theme: '可爱限定款', mark: '♡', accent: '#35675e', tint: '#dbf2e8' },
+  ];
+
+  const deckKey = 'meimei-birthday-mm1120-deck';
+  const rewardScene = scenes[1];
+  const rewardHeading = document.querySelector('#reward-heading');
+  const giftCount = document.querySelector('#gift-count');
+  const collectionProgress = document.querySelector('#collection-progress');
+  collectionProgress.max = gifts.length;
+  const giftScratch = document.querySelector('#gift-scratch');
+  const giftScratchHeading = document.querySelector('#gift-scratch-heading');
+  const giftScratchContent = document.querySelector('#gift-scratch-content');
+  const giftScratchTemplate = document.querySelector('#gift-scratch-template');
+  const collectionComplete = document.querySelector('#collection-complete');
+  const giftFinish = document.querySelector('#gift-finish');
+  const browseAlbum = document.querySelector('#browse-album');
+  const albumGrid = document.querySelector('#album-grid');
+  const opened = new Set();
+  let deck;
+  let activeSlot = null;
+  let wishSeen = false;
+
+  function isGiftSlot(slot, count = gifts.length) {
+    return Number.isInteger(slot) && slot >= 0 && slot < count;
+  }
+
+  function shuffleGifts(items = gifts) {
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index--) {
+      const other = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+    }
+    return shuffled;
+  }
+
+  function loadDeck() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(deckKey));
+      if (Array.isArray(saved?.order) && saved.order.length > 0 && new Set(saved.order).size === saved.order.length) {
+        const restored = saved.order.map(id => gifts.find(gift => gift.id === id));
+        if (restored.every(Boolean)) {
+          const added = gifts.filter(gift => !restored.includes(gift));
+          deck = [...restored, ...shuffleGifts(added)];
+          if (Array.isArray(saved.opened)) {
+            saved.opened.filter(slot => isGiftSlot(slot, restored.length)).forEach(slot => opened.add(slot));
+          }
+          activeSlot = isGiftSlot(saved.activeSlot, restored.length) ? saved.activeSlot : null;
+          wishSeen = opened.size === gifts.length && saved.wishSeen === true;
+          return;
+        }
+      }
+    } catch {
+      // 本地存储受限时，页面可在本次打开期间继续使用。
+    }
+
+    deck = shuffleGifts();
+    try {
+      const previous = JSON.parse(localStorage.getItem('meimei-birthday-mm1120-selection'));
+      if (isGiftSlot(previous?.slot)) {
+        const oldGiftSlot = deck.findIndex(gift => gift.id === previous.giftId);
+        if (oldGiftSlot >= 0) {
+          activeSlot = previous.slot;
+          [deck[activeSlot], deck[oldGiftSlot]] = [deck[oldGiftSlot], deck[activeSlot]];
+        }
+      }
+    } catch {
+      // 旧版选卡记录无法读取时，直接使用新卡组。
+    }
+  }
+
+  function saveDeck() {
+    try {
+      const state = {
+        order: deck.map(gift => gift.id),
+        opened: [...opened],
+        activeSlot,
+      };
+      if (wishSeen) state.wishSeen = true;
+      localStorage.setItem(deckKey, JSON.stringify(state));
+    } catch {
+      // 浏览器无法保存时，保留当前页面中的进度。
+    }
+  }
+
+  function renderGiftChoices() {
+    giftCount.textContent = `已收藏 ${opened.size} / ${gifts.length}`;
+    collectionProgress.value = opened.size;
+    collectionComplete.hidden = activeSlot !== null || opened.size !== gifts.length;
+    browseAlbum.hidden = !wishSeen;
+    giftFinish.textContent = wishSeen ? '重读生日祝福' : '解锁生日祝福';
+    giftChoices.forEach((button, slot) => {
+      const gift = deck[slot];
+      const selected = slot === activeSlot;
+      const revealed = opened.has(slot);
+      button.disabled = !selected && activeSlot !== null;
+      button.classList.toggle('is-opened', revealed);
+      if (selected) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+      button.querySelector('.ticket-mark').textContent = revealed ? gift.mark : '✧';
+      button.querySelector('.ticket-name').textContent = revealed ? gift.name : '';
+      button.querySelector('.ticket-name').hidden = !revealed;
+      button.querySelector('.ticket-status').textContent = revealed ? '已收藏' : '未揭晓';
+      if (revealed) {
+        button.style.setProperty('--opened-accent', gift.accent);
+        button.style.setProperty('--opened-tint', gift.tint);
+        button.setAttribute('aria-label', `第 ${slot + 1} 张礼物卡，${gift.name}，查看礼物`);
+      } else {
+        button.setAttribute('aria-label', selected ? `第 ${slot + 1} 张礼物卡，已选` : `选择第 ${slot + 1} 张礼物卡`);
+      }
+    });
+  }
+
+  function finishGift(reviewing) {
+    activeSlot = null;
+    if (!reviewing) saveDeck();
+    giftScratch.hidden = true;
+    giftScratchContent.replaceChildren();
+    rewardScene.style.removeProperty('--accent');
+    rewardScene.style.removeProperty('--tint');
+    renderGiftChoices();
+    window.scrollTo(0, 0);
+    rewardHeading.focus({ preventScroll: true });
+  }
+
+  function showSelectedGift(slot, reviewing = false) {
+    const gift = deck[slot];
+    giftScratchContent.replaceChildren(giftScratchTemplate.content.cloneNode(true));
+    giftScratchHeading.textContent = `第 ${slot + 1} 张礼物卡`;
+    const revealStatus = `已收藏${gift.name}，${gift.theme}。`;
+    const reveal = makeScratchCard(
+      giftScratch, silverFoil, revealStatus, () => finishGift(reviewing), () => {
+        giftScratch.querySelector('.symbol').textContent = gift.mark;
+        giftScratch.querySelector('.reward-theme').textContent = gift.theme;
+        giftScratch.querySelector('.reward-title').textContent = `${gift.name} ×1`;
+        if (!opened.has(slot)) {
+          opened.add(slot);
+          saveDeck();
+        }
+        rewardScene.style.setProperty('--accent', gift.accent);
+        rewardScene.style.setProperty('--tint', gift.tint);
+        renderGiftChoices();
+      },
+    );
+    giftScratch.hidden = false;
+    if (opened.has(slot)) reveal();
+  }
+
+  function chooseGift(slot) {
+    if (switching || current !== 1) return;
+    if (activeSlot === null) {
+      const reviewing = opened.has(slot);
+      activeSlot = slot;
+      if (!reviewing) saveDeck();
+      renderGiftChoices();
+      showSelectedGift(slot, reviewing);
+    }
+    if (activeSlot !== slot) return;
+    giftScratchHeading.focus({ preventScroll: true });
+    if (giftScratch.getBoundingClientRect().bottom > innerHeight) {
+      giftScratch.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  function enterCollection() {
+    if (deck) return;
+    loadDeck();
+    saveDeck();
+    renderGiftChoices();
+    if (activeSlot !== null) showSelectedGift(activeSlot);
+  }
+
+  function renderAlbum() {
+    document.querySelector('#album-complete').textContent = `已收藏 ${opened.size} / ${gifts.length}`;
+    if (albumGrid.childElementCount) return;
+    for (const [slot, gift] of deck.entries()) {
+      const entry = document.createElement('li');
+      entry.className = 'album-entry';
+      entry.style.setProperty('--opened-accent', gift.accent);
+      entry.style.setProperty('--opened-tint', gift.tint);
+      for (const [className, label] of [
+        ['ticket-number', String(slot + 1).padStart(2, '0')],
+        ['ticket-mark', gift.mark],
+        ['ticket-name', gift.name],
+        ['ticket-theme', gift.theme],
+      ]) {
+        const part = document.createElement('span');
+        part.className = className;
+        part.textContent = label;
+        if (className === 'ticket-mark') part.setAttribute('aria-hidden', 'true');
+        entry.append(part);
+      }
+      albumGrid.append(entry);
+    }
+  }
+
+  const giftChoices = gifts.map((_, slot) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gift-choice';
+    button.setAttribute('aria-controls', 'gift-scratch');
+    for (const [className, label] of [
+      ['ticket-number', String(slot + 1).padStart(2, '0')],
+      ['ticket-mark', '✧'],
+      ['ticket-name', ''],
+      ['ticket-status', '未揭晓'],
+      ['ticket-edition', 'Limited Edition'],
+    ]) {
+      const part = document.createElement('span');
+      part.className = className;
+      part.textContent = label;
+      part.setAttribute('aria-hidden', 'true');
+      button.append(part);
+    }
+    button.addEventListener('click', () => chooseGift(slot));
+    return button;
+  });
+  document.querySelector('#gift-grid').append(...giftChoices);
+  giftFinish.addEventListener('click', () => {
+    if (activeSlot === null && opened.size === gifts.length) goTo(2);
+  });
+  browseAlbum.addEventListener('click', () => {
+    if (activeSlot === null && wishSeen) goTo(3);
+  });
+  const revealWish = makeScratchCard(scenes[2], silverFoil, '生日祝福已解锁', () => goTo(3), () => {
+    if (wishSeen) return;
+    wishSeen = true;
+    saveDeck();
+    renderGiftChoices();
+  });
+  startButton.addEventListener('click', () => {
+    if (current !== 0 || switching || startButton.disabled) return;
+    startButton.disabled = true;
+    enterCollection();
+    if (reducedMotion.matches) goTo(1);
+    else {
+      scenes[0].classList.add('is-opening');
+      openingTimer = setTimeout(() => goTo(1), 520);
+    }
+  });
+  document.querySelector('#reread').addEventListener('click', () => goTo(2));
+  document.querySelector('#return-wall').addEventListener('click', () => goTo(1));
+  rememberStage(0, true);
+  window.addEventListener('popstate', event => {
+    const index = event.state?.meimeiStage;
+    if (Number.isInteger(index) && index >= 0 && index < scenes.length) goTo(index, true);
+  });
+
+  // 可填写同目录下已经获得使用许可的音频文件名，也可在页面内选择文件。
+  const musicSource = '';
+  const musicAudio = document.querySelector('#music-audio');
+  const musicStatus = document.querySelector('#music-status');
+  const musicToggle = document.querySelector('#music-toggle');
+  const musicPick = document.querySelector('#music-pick');
+  const musicFile = document.querySelector('#music-file');
+  const musicVolume = document.querySelector('#music-volume');
+  const musicVolumeHelp = document.querySelector('#music-volume-help');
+  let localMusicUrl = '';
+  let musicContext;
+  let musicGain;
+  let volumeChecked = false;
+
+  function applyMusicVolume() {
+    const level = Number(musicVolume.value);
+    if (musicGain) musicGain.gain.value = level;
+    else {
+      try { musicAudio.volume = level; } catch { /* 部分设备使用系统音量。 */ }
+    }
+  }
+
+  function prepareMusicVolume() {
+    if (!volumeChecked) {
+      volumeChecked = true;
+      let nativeVolume = false;
+      try {
+        musicAudio.volume = .35;
+        nativeVolume = Math.abs(musicAudio.volume - .35) < .01;
+      } catch { /* 尝试使用 Web Audio。 */ }
+      if (!nativeVolume) {
+        try {
+          const Audio = window.AudioContext || window.webkitAudioContext;
+          musicContext = new Audio();
+          musicGain = musicContext.createGain();
+          musicContext.createMediaElementSource(musicAudio).connect(musicGain).connect(musicContext.destination);
+        } catch {
+          musicGain = null;
+          musicVolume.disabled = true;
+          musicVolumeHelp.hidden = false;
+        }
+      }
+    }
+    applyMusicVolume();
+    if (musicGain && musicContext.state !== 'running') musicContext.resume().catch(() => {});
+  }
+
+  function setMusicSource(source, temporary = false) {
+    musicAudio.pause();
+    if (localMusicUrl) URL.revokeObjectURL(localMusicUrl);
+    localMusicUrl = temporary ? source : '';
+    musicAudio.src = source;
+    musicAudio.load();
+    musicToggle.disabled = false;
+    musicVolume.disabled = !musicVolumeHelp.hidden;
+    musicToggle.textContent = '播放';
+    musicPick.textContent = '更换音频';
+    musicStatus.textContent = '音乐已添加';
+    applyMusicVolume();
+  }
+
+  function musicError() {
+    musicToggle.textContent = '播放';
+    musicStatus.textContent = '音乐无法播放，请换一个音频文件。';
+    if (musicAudio.error) {
+      musicToggle.disabled = true;
+      musicVolume.disabled = true;
+    }
+  }
+
+  function showMusicPaused() {
+    musicToggle.textContent = '播放';
+    if (!musicAudio.error && !musicAudio.ended &&
+        (musicAudio.currentTime > 0 || musicStatus.textContent === '正在加载音乐…')) {
+      musicStatus.textContent = '已暂停';
+    }
+  }
+
+  musicPick.addEventListener('click', () => musicFile.click());
+  musicFile.addEventListener('change', () => {
+    const file = musicFile.files[0];
+    if (file) setMusicSource(URL.createObjectURL(file), true);
+    musicFile.value = '';
+  });
+  musicVolume.addEventListener('input', applyMusicVolume);
+  musicToggle.addEventListener('click', () => {
+    if (!musicAudio.paused) {
+      musicAudio.pause();
+      showMusicPaused();
+      return;
+    }
+    prepareMusicVolume();
+    musicToggle.textContent = '暂停';
+    musicStatus.textContent = '正在加载音乐…';
+    const requestedSource = musicAudio.getAttribute('src');
+    musicAudio.play().catch(error => {
+      if (error.name !== 'AbortError' && musicAudio.getAttribute('src') === requestedSource) musicError();
+    });
+  });
+  musicAudio.addEventListener('playing', () => {
+    musicToggle.textContent = '暂停';
+    musicStatus.textContent = '正在播放';
+  });
+  musicAudio.addEventListener('pause', showMusicPaused);
+  musicAudio.addEventListener('ended', () => {
+    musicToggle.textContent = '播放';
+    musicStatus.textContent = '播放结束';
+  });
+  musicAudio.addEventListener('error', musicError);
+  if (musicSource) setMusicSource(musicSource);
+</script>
+</body>
+</html>
